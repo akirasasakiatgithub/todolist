@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/index', [PostController::class, 'index']);
+Route::post('/add', [PostController::class, 'add']);
+Route::post('/update', [PostController::class, 'update']);
+Route::post('/delete', [PostController::class, 'delete']);
