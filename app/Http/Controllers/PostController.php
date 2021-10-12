@@ -25,10 +25,10 @@ class PostController extends Controller
     public function update(Request $request)
     {
         $form = $request->all();
-        /*unset($form['_token']);
-        Post::find($form->id)->update($form);
-        return redirect('/index');*/
-        return $form;
+        unset($form['_token']);
+        $id = Post::find($request->id);
+        $id->update($form);
+        return redirect('/index');
     }
 
     public function delete(Request $request)
