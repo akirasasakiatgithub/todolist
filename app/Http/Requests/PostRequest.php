@@ -13,7 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == '/add' || '/update') {
+        if ($this->path() == '/todo/create' || '/todo/update') {
             return true;
         } else {
             return false;
@@ -34,6 +34,6 @@ class PostRequest extends FormRequest
 
     protected function getRedirectUrl()
     {
-        return 'index';
+        return '/';
     }
 }

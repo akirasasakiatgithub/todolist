@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\TodoController;
 use App\Models\Post;
 
 /*
@@ -15,7 +15,7 @@ use App\Models\Post;
 |
 */
 
-Route::get('/index', [PostController::class, 'index']);
-Route::post('/add', [PostController::class, 'add']);
-Route::post('/update', [PostController::class, 'update']);
-Route::post('/delete', [PostController::class, 'delete']);
+Route::get('/', [TodoController::class, 'index']);
+Route::post('/todo/create', [TodoController::class, 'create']);
+Route::post('/todo/update', [TodoController::class, 'update']);
+Route::post('/todo/delete', [TodoController::class, 'delete']);
