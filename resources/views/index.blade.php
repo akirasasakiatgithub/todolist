@@ -1,22 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>COACHTECH</title>
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-  <div>
-    <div>
-      <p>Todo List</p>
-      <div>
-        <form action="/add" method="post">
+  <div class="container">
+    <div class="card">
+      <p class="title mb-15">Todo List</p>
+      @error('content')
+      <ul>
+        <li>{{$message}}</li>
+      </ul>
+      @enderror
+      <div class="todo">
+        <form action="/add" method="post" class="mb-30 between flex">
           @csrf
-          <input type="text" name="content">
-          <input type="submit" value="追加">
+          <input type="text" name="content" class="input-add">
+          <input type="submit" value="追加" class="button-add">
         </form>
-        <table>
+        <table class="table">
           <tbody>
             <tr>
             <th>作成日</th>
@@ -29,20 +36,20 @@
             <tr>
             <td>{{$item->created_at}}</td>
             <td>
-              <form action="update" method="post" id="form_update">
+              <form action="update" method="post" id="form_update{{$item->id}}">
               @csrf
               <input type="hidden" name="id" value="{{$item->id}}">
-              <input type="text" name="content" value="{{$item->content}}">
+              <input type="text" name="content" value="{{$item->content}}" class="input-update">
               </form>
             </td>
             <td>
-              <button form="form_update">更新</button>
+              <button form="form_update{{$item->id}}" class="button-update">更新</button>
             </td>
             <td>
               <form action="delete" method="post">
               @csrf
                 <input type="hidden" name="id" value="{{$item->id}}">
-                <button>削除</button>
+                <button class="button-delete">削除</button>
               </form>
             </td>
             </tr>

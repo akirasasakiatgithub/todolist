@@ -13,7 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == ('/add' || '/update')) {
+        if ($this->path() == '/add' || '/update') {
             return true;
         } else {
             return false;
@@ -28,12 +28,12 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|max20'
+            'content' => 'required|max:20'
         ];
     }
 
     protected function getRedirectUrl()
     {
-        return '/index';
+        return 'index';
     }
 }

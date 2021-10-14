@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -13,13 +14,12 @@ class PostController extends Controller
         return view('index', ['items' => $items]);
     }
 
-    public function add(Request $request)
+    public function add(Request $request, PostRequest $postrequest)
     {
         $form = $request->all();
         unset($form['_token']);
         Post::create($form);
         return redirect('/index');
-        return $form;
     }
 
     public function update(Request $request)
